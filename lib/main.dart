@@ -125,7 +125,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset("assets/image/logo.png", height: 35.0),
                       Padding(
                         padding: const EdgeInsets.only(left: 17.0, top: 7.0),
                         child: Text( "Microblet",

@@ -10,6 +10,8 @@ import 'package:crypto_template/component/style.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:crypto_template/screen/home/Modal.dart';
+
 
 class home extends StatefulWidget {
   _homeState createState() => _homeState();
@@ -26,8 +28,8 @@ class _homeState extends State<home> {
   /// check the condition is right or wrong for image loaded or no
   ///
   bool loadCard = true;
+  Modal modal = new Modal();
 
-  @override
   @override
   void initState() {
     imageNetwork.resolve(new ImageConfiguration()).addListener((_, __) {
@@ -66,9 +68,9 @@ class _homeState extends State<home> {
                   overlayShadowSize: 0.25,
                   images: [
                     AssetImage("assets/image/News_Image/1.jpg"),
+                    AssetImage("assets/image/News_Image/4.jpg"),
                     AssetImage("assets/image/News_Image/2.jpg"),
-                    AssetImage("assets/image/banner/banner2.png"),
-                    AssetImage("assets/image/banner/banner3.jpg"),
+                    AssetImage("assets/image/News_Image/3.jpg"),
                   ],
                 )),
             SizedBox(height: 10.0),
@@ -116,7 +118,7 @@ class _homeState extends State<home> {
               ]
             ),            
             Padding(
-              padding: const EdgeInsets.only(top: 20.0, left: 20.0,right: 20.0,bottom: 0.0),
+              padding: const EdgeInsets.only(top: 10.0, left: 20.0,right: 20.0,bottom: 0.0),
               child: Text(
                 "Compañía con base en Buenos Aires, Argentina, dedicada a la creación de soluciones de software full-stack. Nos especializamos en la construcción de APIs bajo los estándares más modernos y ágiles del mercado.",
                 style: TextStyle(
@@ -127,11 +129,20 @@ class _homeState extends State<home> {
                 textAlign: TextAlign.center,
               ),
             ), 
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0, left: 10.0,right: 10.0,bottom: 10.0),
+              child: OutlineButton(
+                onPressed: () => modal.mainBottomSheet(context),
+                child: Text("Contáctenos"),
+                borderSide: BorderSide(color: Colors.blue),
+                shape: StadiumBorder(),
+              ),
+            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 70.0, left: 20.0,bottom: 5.0,),
+                  padding: const EdgeInsets.only(top: 70.0,bottom: 5.0,),
                   child: Text(
                     "Nuestra visión",
                     style: TextStyle(
@@ -153,7 +164,7 @@ class _homeState extends State<home> {
                     color: Theme.of(context).textSelectionColor,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w200),
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
               ),
             ),
             Padding(
@@ -165,7 +176,7 @@ class _homeState extends State<home> {
                     color: Theme.of(context).textSelectionColor,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w200),
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
               ),
             ),
             Padding(
@@ -177,14 +188,14 @@ class _homeState extends State<home> {
                     color: Theme.of(context).textSelectionColor,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w200),
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
               ),
             ),          
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 50.0, left: 20.0,bottom: 5.0,),
+                  padding: const EdgeInsets.only(top: 50.0, left: 20.0,right: 20.0,bottom: 5.0,),
                   child: Text(
                     "Nuestra misión",
                     style: TextStyle(
@@ -192,7 +203,7 @@ class _homeState extends State<home> {
                         color: Theme.of(context).textSelectionColor,
                         fontSize: 35.0,
                         fontWeight: FontWeight.w400),
-                    textAlign: TextAlign.left,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ]
@@ -206,7 +217,7 @@ class _homeState extends State<home> {
                     color: Theme.of(context).textSelectionColor,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w200),
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
               ),
             ),
             Padding(
@@ -218,11 +229,11 @@ class _homeState extends State<home> {
                     color: Theme.of(context).textSelectionColor,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w200),
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0, left: 20.0,right: 20.0,bottom: 0.0),
+              padding: const EdgeInsets.only(top: 10.0, left: 20.0,right: 20.0,bottom: 20.0),
               child: Text(
                 "Optamos por la libertad y la seguridad de nuestros clientes.",
                 style: TextStyle(
@@ -230,7 +241,7 @@ class _homeState extends State<home> {
                     color: Theme.of(context).textSelectionColor,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w200),
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
               ),
             ),             
           ],

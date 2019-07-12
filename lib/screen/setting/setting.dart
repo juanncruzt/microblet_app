@@ -2,6 +2,7 @@ import 'package:crypto_template/screen/setting/SeeAllTemplate.dart';
 import 'package:crypto_template/screen/setting/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_template/component/style.dart';
+import 'package:crypto_template/screen/home/Modal.dart';
 
 class setting extends StatefulWidget {
   ///
@@ -19,6 +20,8 @@ class _settingState extends State<setting> {
   /// Bloc for double theme
   ///
   ThemeBloc themeBloc;
+  Modal modal = new Modal();
+
   _settingState(this.themeBloc);
   bool theme = true;
   String _img = "assets/image/setting/lightMode.png";
@@ -47,7 +50,7 @@ class _settingState extends State<setting> {
             ),
            
             SizedBox(
-              height: 10.0,
+              height: 30.0,
             ),
 
             ///
@@ -75,7 +78,7 @@ class _settingState extends State<setting> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                 child: Container(
-                  height: 125.0,
+                  height: 100.0,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -87,67 +90,156 @@ class _settingState extends State<setting> {
             SizedBox(
               height: 20.0,
             ),
-            Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                child: Container(
-                height:400.0,
-                width: double.infinity, 
-                decoration: BoxDecoration(
-                  color: Theme.of(context).canvasColor,
-                  borderRadius: BorderRadius.all(Radius.circular(10.0))
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left:18.0,right: 18.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(height: 10.0,),
-                      Text("Contacto",style: TextStyle(color: Theme.of(context).hintColor.withOpacity(0.7),fontFamily: "Popins",fontSize: 25.0)),
-                      Padding(
-                        padding: const EdgeInsets.only(right:5.0,bottom: 10.0,top:10.0),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Nombre y Apellido *",
-                            hintStyle: TextStyle(color: Theme.of(context).hintColor,fontFamily: "Popins",fontSize: 15.0)
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right:5.0,bottom: 10.0,top:5.0),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Email *",
-                            hintStyle: TextStyle(color: Theme.of(context).hintColor,fontFamily: "Popins",fontSize: 15.0)
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right:5.0,bottom: 10.0,top:5.0),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Teléfono *",
-                            hintStyle: TextStyle(color: Theme.of(context).hintColor,fontFamily: "Popins",fontSize: 15.0)
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right:5.0,bottom: 0.0,top:5.0),
-                        child: TextField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: 5,
-                          decoration: InputDecoration(
-                            hintText: "Mensaje",
-                            hintStyle: TextStyle(color: Theme.of(context).hintColor,fontFamily: "Popins",fontSize: 15.0)
-                          ),
-                        ),
-                      ),
-                    ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, left: 0.0,bottom: 5.0),
+                  child: Text(
+                    "Alcance Internacional",
+                    style: TextStyle(
+                        fontFamily: "Sans",
+                        color: Theme.of(context).textSelectionColor,
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.w400),
+                    textAlign: TextAlign.left,
                   ),
                 ),
+              ]
+            ),           
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 20.0,right: 20.0,bottom: 0.0),
+              child: Text(
+                "Microblet está habilitado por la AFIP (Administración Federal de Ingresos Públicos) como ente autorizado para la exportación de servicios informáticos.",
+                style: TextStyle(
+                    fontFamily: "Pragmatica",
+                    color: Theme.of(context).textSelectionColor,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w200),
+                textAlign: TextAlign.center,
               ),
             ),
-           SizedBox(height: 20.0,),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 20.0,right: 20.0,bottom: 0.0),
+              child: Text(
+                "Esto quiere decir que podemos emprender negocios sin limitaciones impositivas.",
+                style: TextStyle(
+                    fontFamily: "Pragmatica",
+                    color: Theme.of(context).textSelectionColor,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w200),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 20.0,right: 20.0,bottom: 0.0),
+              child: Text(
+                "Confíenos su proyecto desde Argentina o desde cualquier parte del mundo",
+                style: TextStyle(
+                    fontFamily: "Pragmatica",
+                    color: Theme.of(context).textSelectionColor,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w200),
+                textAlign: TextAlign.center,
+              ),
+            ), 
+            SizedBox(
+              height: 20.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 5.0, left: 10.0,right: 10.0),
+              child: OutlineButton(
+                onPressed: () => modal.mainBottomSheet(context),
+                child: Text("Contáctenos"),
+                borderSide: BorderSide(color: Colors.blue),
+                shape: StadiumBorder(),
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0, left: 0.0,bottom: 5.0),
+                  child: Text(
+                    "Ubicación",
+                    style: TextStyle(
+                        fontFamily: "Sans",
+                        color: Theme.of(context).textSelectionColor,
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.w400),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ]
+            ),           
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 20.0,right: 20.0,bottom: 0.0),
+              child: Text(
+                "Alicia Moreau de Justo 1150, Of. 306 A",
+                style: TextStyle(
+                    fontFamily: "Pragmatica",
+                    color: Theme.of(context).textSelectionColor,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w200),
+                textAlign: TextAlign.center,
+              ),
+            ),
+             Padding(
+              padding: const EdgeInsets.only(top: 5.0, left: 20.0,right: 20.0,bottom: 0.0),
+              child: Text(
+                "Ciudad Autónoma de Buenos Aires, Argentina",
+                style: TextStyle(
+                    fontFamily: "Pragmatica",
+                    color: Theme.of(context).textSelectionColor,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w200),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 30.0, left: 0.0,bottom: 5.0),
+                  child: Text(
+                    "Contacto",
+                    style: TextStyle(
+                        fontFamily: "Sans",
+                        color: Theme.of(context).textSelectionColor,
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.w400),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ]
+            ),           
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 20.0,right: 20.0,bottom: 0.0),
+              child: Text(
+                "+549 11 5278 5910",
+                style: TextStyle(
+                    fontFamily: "Pragmatica",
+                    color: Theme.of(context).textSelectionColor,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w200),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 5.0, left: 20.0,right: 20.0,bottom: 10.0),
+              child: Text(
+                "info@microblet.com",
+                style: TextStyle(
+                    fontFamily: "Pragmatica",
+                    color: Theme.of(context).textSelectionColor,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w200),
+                textAlign: TextAlign.center,
+              ),
+            ),
           ],
         ),
       ),
